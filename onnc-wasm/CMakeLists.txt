@@ -1,0 +1,5 @@
+set(ONNX_WASM_ROOT ${CMAKE_CURRENT_LIST_DIR})
+include_directories(${CMAKE_CURRENT_LIST_DIR})
+if(BUILD_TARGET STREQUAL "native")
+    add_subdirectory(native)
+endif()

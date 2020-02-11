@@ -1,0 +1,21 @@
+
+Welcome to development environment of ONNC WebAssembly Backend
+
+For a newly created container, please run ./scripts/regression.sh to make sure your container works fine.
+
+Useful paths:
+    ~/models : Some ONNX models and input tensors (alexnet, TinyYolov1)
+    ~/workspace : Your workspace
+
+Usages:
+* Build ONNX model into .wasm file with runtime library:
+    ./scripts/build.sh <mode> <onnx_file> [model_dir]
+* Run built ONNX wasm module:
+    ./scripts/run.sh <mode> <model_dir> <model_name> <--stream | tensor_file>
+* Inference ONNX model with onnxruntime:
+    python3 ./scripts/run_onnxruntime.py <model_file> <tensor_file> <output_file>
+* Convert raw output data (.numpy) to text format:
+    python3 ./scripts/numpy2text.py <raw_file> <text_file>
+
+For more informations, use each script without any arguments 
+
