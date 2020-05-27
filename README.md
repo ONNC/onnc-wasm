@@ -12,8 +12,13 @@ Implement an ONNC Backend that can compile ONNX model to WebAssembly module and 
 ### Clone wasm-backend
 
 ```shell
-git clone https://github.com/ONNC/wasm-backend.git
-cd wasm-backend && git submodule update --init --recursive
+# Clone ONNC-Wasm
+git clone https://github.com/ONNC/onnc-wasm.git
+cd onnc-wasm
+# Setup SSVM
+git submodule add https://github.com/second-state/SSVM ssvm
+cd ssvm && git checkout b5785ed6f8f24de2afa54ec6c28904e7607a0f12
+cd ..
 ```
 
 ### Enter docker
@@ -105,7 +110,7 @@ cd /home/onnc/workspace/models && ../scripts/build.sh ssvm /home/onnc/tiny_yolov
 
 2. Convert input JPEG file to Tensor file
 
-You can use your JPEG image file with `jpg2t` tool to convert into Tensor file. It can also crop image to 448*448 as TinyYolo v1 input
+You can use your JPEG image file with `jpg2t` tool to convert into Tensor file. It can also crop image to 448\*448 as TinyYolo v1 input
 
 Take test image file as example
 
@@ -121,7 +126,7 @@ Take test image file as example
 
 The result will be `output.data` as raw binary data
 
-4. Detect result and combined it with input image file into output image file 
+4. Detect result and combined it with input image file into output image file
 
 ```shell
 ./out-ssvm/bin/detection output.data /home/onnc/tiny_yolov1/test_data_set_0/input_0.jpg output.jpg
